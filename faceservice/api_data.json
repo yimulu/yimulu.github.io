@@ -789,7 +789,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"FaceId\":1,\n    \"CollectionId\":1,\n    \"ExternalId\":\"860001\",\n    \"Image\":\"https://db.face.com/1.jpg\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"FaceId\":1,\n    \"CollectionId\":1,\n    \"ExternalId\":\"860001\",\n    \"Image\":\"https://db.face.com/1.jpg\",\n    \"Time\":\"2019-06-13 09:46:49\"\n}",
           "type": "json"
         }
       ]
@@ -872,7 +872,7 @@
           {
             "group": "Parameter",
             "type": "Int[]",
-            "optional": false,
+            "optional": true,
             "field": "CollectionIds",
             "description": "<p>The ids of collection you want to fetch faces.</p>"
           },
@@ -922,7 +922,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Faces\":[\n     {\n         \"FaceId\": 1,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860001\",\n         \"Image\": \"https://db.face.com/1.jpg\"\n     }],\n  \"Remainings\":32\n  \"NextToken\":\"MGYZLAHX1T5a\",\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"Faces\":[\n     {\n         \"FaceId\": 1,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860001\",\n         \"Image\": \"https://db.face.com/1.jpg\",\n         \"Time\":\"2019-06-13 09:46:49\"\n     }],\n  \"Remainings\":32\n  \"NextToken\":\"MGYZLAHX1T5a\",\n}",
           "type": "json"
         }
       ]
@@ -992,7 +992,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Faces\":[\n     {\n         \"FaceId\": 1,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860001\",\n         \"Image\": \"https://db.face.com/2.jpg\"\n     },\n     {\n         \"FaceId\": 2,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860002\",\n         \"Image\": \"https://db.face.com/2.jpg\"\n     }],\n  \"Total\":31\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"Faces\":[\n     {\n         \"FaceId\": 1,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860001\",\n         \"Image\": \"https://db.face.com/2.jpg\",\n         \"Time\":\"2019-06-13 09:46:49\"\n     },\n     {\n         \"FaceId\": 2,\n         \"CollectionId\": 1,\n         \"ExternalId\": \"860002\",\n         \"Image\": \"https://db.face.com/2.jpg\",\n         \"Time\":\"2019-06-13 10:41:09\"\n     }],\n  \"Total\":31\n}",
           "type": "json"
         }
       ]
@@ -1607,7 +1607,7 @@
           {
             "group": "Parameter",
             "type": "Long",
-            "optional": false,
+            "optional": true,
             "field": "FaceId",
             "description": "<p>The id of face. (-1 means to fetch the fail records)</p>"
           },
@@ -2121,6 +2121,19 @@
         "name": "ADMIN"
       }
     ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of stream.</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
@@ -2136,7 +2149,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"StreamId\": 1,\n  \"RtspUrl\": \"rtsp://usbcam_002.com\",\n  \"CollectionIds\":[1],\n  \"Source\": \"#12345#LH-C1-2F\",\n  \"PostUrls\": []\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"StreamId\": 1,\n  \"RtspUrl\": \"rtsp://usbcam_002.com\",\n  \"CollectionIds\":[1],\n  \"Source\": \"#12345#LH-C1-2F\",\n  \"Time\":\"2019-06-24 10:41:09\"\n  \"PostUrls\": []\n}",
           "type": "json"
         }
       ]
@@ -2199,7 +2212,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Streams\":\n  [\n    {\n      \"StreamId\": 1,\n      \"RtspUrl\": \"rtsp://usbcam_002.com\",\n      \"CollectionIds\":[1,2,3],\n      \"Source\": \"#12345#LH-C1-2F\",\n      \"PostUrls\": []\n    },\n    {\n      \"StreamId\": 2,\n      \"RtspUrl\": \"rtsp://usbcam_003.com\",\n      \"CollectionIds\":[1],\n      \"Source\": \"#12346#LH-C1-3F\",\n      \"PostUrls\": [\"https://10.167.218.76:80/rtsp/result\"]\n    }\n  ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"Streams\":\n  [\n    {\n      \"StreamId\": 1,\n      \"RtspUrl\": \"rtsp://usbcam_002.com\",\n      \"CollectionIds\":[1,2,3],\n      \"Source\": \"#12345#LH-C1-2F\",\n      \"Time\":\"2019-06-24 10:41:09\"\n      \"PostUrls\": []\n    },\n    {\n      \"StreamId\": 2,\n      \"RtspUrl\": \"rtsp://usbcam_003.com\",\n      \"CollectionIds\":[1],\n      \"Source\": \"#12346#LH-C1-3F\",\n      \"Time\":\"2019-06-24 11:41:09\"\n      \"PostUrls\": [\"https://10.167.218.76:80/rtsp/result\"]\n    }\n  ]\n}",
           "type": "json"
         }
       ]
