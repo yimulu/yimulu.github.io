@@ -2007,7 +2007,7 @@ define({ "api": [
           {
             "group": "Success 200",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "NextIterator",
             "description": "<p>The retrieval point for the next polling.</p>"
           }
