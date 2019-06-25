@@ -215,7 +215,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Collections\":[\n    {\"CollectionId\":1,\n     \"ExternalId\":\"TSBG\",\n     \"Description\":\"XXX處,XXX部,XXX課\",\n     \"Time\":\"2019-06-12 07:46:48\"},\n    {\"CollectionId\":2,\n     \"ExternalId\":\"CNSBG\",\n     \"Description\":\"YYY處,YYY部,YYY課\",\n     \"Time\":\"2019-06-12 07:46:49\"}],\n  \"Remainings\":30,\n  \"NextToken\":\"MGYZLAHX1T5aYRF8aXcIus987wHrEpQ1\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"Collections\":[\n    {\"CollectionId\":1,\n     \"ExternalId\":\"TSBG\",\n     \"FaceCount\":283,\n     \"Description\":\"XXX處,XXX部,XXX課\",\n     \"Time\":\"2019-06-12 07:46:48\"},\n    {\"CollectionId\":2,\n     \"ExternalId\":\"CNSBG\",\n     \"FaceCount\":267,\n     \"Description\":\"YYY處,YYY部,YYY課\",\n     \"Time\":\"2019-06-12 07:46:49\"}],\n  \"Remainings\":30,\n  \"NextToken\":\"MGYZLAHX1T5aYRF8aXcIus987wHrEpQ1\"\n}",
           "type": "json"
         }
       ]
@@ -1979,6 +1979,13 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "Start",
+            "description": "<p>The start date time of results to begin fetch.</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Int",
             "optional": true,
             "field": "MaxNum",
@@ -2016,7 +2023,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Recognitions\":[\n    {\n      \"FaceId\":1\n      \"CollectionId\":1\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461597.jpg\"\n      \"Source\":\"rtsp://10.167.218.79:554/live\"\n      \"Time\":\"2019-06-14 08:17:41.597\"\n    },\n    {\n      \"FaceId\":2\n      \"CollectionId\":1\n      \"ExternalId\": \"860002\",\n      \"Image\": \"https://db.face.com/face_2.jpg\"\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645.jpg\"\n      \"Source\":\"rtsp://10.167.218.79:554/live\"\n      \"Time\":\"2019-06-14 08:17:41.645\"\n    },\n    {\n      \"FaceId\":-1\n      \"CollectionId\":-1\n      \"ExternalId\": \"\",\n      \"Image\": \"\"\n      \"CaptureImage\":\"http://db.face.com/cap_1560471463251.jpg\"\n      \"Source\":\"rtsp://10.167.218.79:554/live\"\n      \"Time\":\"2019-06-14 08:17:43.251\"\n    }\n  ],\n  \"NextIterator\":\"xxEREdf5556fdsFDGeQHJUI87hEfGjNV\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"Recognitions\":[\n    {\n      \"FaceId\":1,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461597.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:41.597\"\n    },\n    {\n      \"FaceId\":2,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860002\",\n      \"Image\": \"https://db.face.com/face_2.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:41.645\"\n    },\n    {\n      \"FaceId\":-1,\n      \"CollectionId\":-1,\n      \"ExternalId\": \"\",\n      \"Image\": \"\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:43.251\"\n    }\n  ],\n  \"NextIterator\":\"xxEREdf5556fdsFDGeQHJUI87hEfGjNV\"\n}",
           "type": "json"
         }
       ]
