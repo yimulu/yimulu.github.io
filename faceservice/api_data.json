@@ -1390,35 +1390,34 @@
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "Start",
-            "description": "<p>The Start date time to delete records.</p>"
+            "field": "start",
+            "description": "<p>The start date time to delete records.</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "End",
-            "description": "<p>The End date time to delete records.</p>"
+            "field": "end",
+            "description": "<p>The end date time to delete records.</p>"
           }
         ]
       }
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 204": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 204",
             "optional": false,
-            "field": "Result",
-            "description": "<p>Result code.</p>"
+            "field": "204",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
@@ -1428,7 +1427,7 @@
   },
   {
     "type": "delete",
-    "url": "/face/recognition",
+    "url": "/face/{id}/recognition",
     "title": "Delete Records of Face",
     "version": "0.1.0",
     "name": "DeleteRecordByFaceId",
@@ -1439,44 +1438,43 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Long",
+            "type": "Int",
             "optional": false,
-            "field": "FaceId",
+            "field": "id",
             "description": "<p>The id of face. (-1 means to delete the fail records)</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "Start",
-            "description": "<p>The Start date time to delete records.</p>"
+            "field": "start",
+            "description": "<p>The start date time to delete records.</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "End",
-            "description": "<p>The End date time to delete records.</p>"
+            "field": "end",
+            "description": "<p>The end date time to delete records.</p>"
           }
         ]
       }
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 204": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 204",
             "optional": false,
-            "field": "Result",
-            "description": "<p>Result code.</p>"
+            "field": "204",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
@@ -1706,28 +1704,28 @@
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "Start",
+            "field": "start",
             "description": "<p>The Start date time to fetch records.</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "End",
+            "field": "end",
             "description": "<p>The End date time to fetch records.</p>"
           },
           {
             "group": "Parameter",
             "type": "Int",
             "optional": true,
-            "field": "MaxNum",
+            "field": "maxNum",
             "description": "<p>The max number of results to fetch.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token from the previous response.</p>"
           }
         ]
@@ -1740,63 +1738,63 @@
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "Recognitions",
+            "field": "recognitions",
             "description": "<p>The list of recognition records.</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "Recognitions.FaceId",
+            "field": "recognitions.faceId",
             "description": "<p>The id of registered face..</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "Recognitions.CollectionId",
+            "field": "recognitions.collectionId",
             "description": "<p>The id of collection you want the face to be registered in..</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.ExternalId",
+            "field": "recognitions.tag",
             "description": "<p>The id you want to associate with the face detect in the image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Image",
+            "field": "recognitions.image",
             "description": "<p>The url of registered face image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.CaptureImage",
+            "field": "recognitions.captureImage",
             "description": "<p>The url of captured image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Source",
+            "field": "recognitions.source",
             "description": "<p>The input image source description for the further record information.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Time",
+            "field": "recognitions.time",
             "description": "<p>The creation time when the record was generated.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token for the subsequent request to fetch the next set of records.</p>"
           }
         ]
@@ -1804,7 +1802,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Recognitions\":[\n    {\n      \"FaceId\":1,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"Source\":\"#12323#E5 South 2nd Gate\",\n      \"Time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"FaceId\":2,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860002\",\n      \"Image\": \"https://db.face.com/face_2.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645_1.jpg\",\n      \"Source\":\"#12323#E5 South 2nd Gate\",\n      \"Time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"FaceId\":-1,\n      \"CollectionId\":-1,\n      \"ExternalId\": \"\",\n      \"Image\": \"\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"Source\":\"#12322#E5 South 1st Gate\",\n      \"Time\":\"2019-06-14 08:17:43\"\n    },\n  ],\n  \"NextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1,\n      \"collectionId\":1,\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":2,\n      \"collectionId\":1,\n      \"tag\": \"860002\",\n      \"image\": \"https://db.face.com/face_2.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645_1.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":-1,\n      \"collectionId\":-1,\n      \"tag\": \"\",\n      \"image\": \"\",\n      \"captureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"source\":\"#12322#E5 South 1st Gate\",\n      \"time\":\"2019-06-14 08:17:43\"\n    },\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
           "type": "json"
         }
       ]
@@ -1886,7 +1884,7 @@
   },
   {
     "type": "get",
-    "url": "/face/recognition",
+    "url": "/face/{id}/recognition",
     "title": "Get Records of Face",
     "version": "0.1.0",
     "name": "RecognizeRecordByFaceId",
@@ -1897,37 +1895,37 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "Long",
-            "optional": true,
-            "field": "FaceId",
+            "type": "Int",
+            "optional": false,
+            "field": "id",
             "description": "<p>The id of face. (-1 means to fetch the fail records)</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "Start",
-            "description": "<p>The Start date time to fetch records.</p>"
+            "field": "start",
+            "description": "<p>The start date time to fetch records.</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "End",
-            "description": "<p>The End date time to fetch records.</p>"
+            "field": "end",
+            "description": "<p>The end date time to fetch records.</p>"
           },
           {
             "group": "Parameter",
             "type": "Int",
             "optional": true,
-            "field": "MaxNum",
+            "field": "maxNum",
             "description": "<p>The max number of results to fetch.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token from the previous response.</p>"
           }
         ]
@@ -1940,63 +1938,63 @@
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "Recognitions",
+            "field": "recognitions",
             "description": "<p>The list of recognition records.</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "Recognitions.FaceId",
+            "field": "recognitions.faceId",
             "description": "<p>The id of registered face..</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "Recognitions.CollectionId",
+            "field": "recognitions.collectionId",
             "description": "<p>The id of collection you want the face to be registered in..</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.ExternalId",
+            "field": "recognitions.tag",
             "description": "<p>The id you want to associate with the face detect in the image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Image",
+            "field": "recognitions.image",
             "description": "<p>The url of registered face image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.CaptureImage",
+            "field": "recognitions.captureImage",
             "description": "<p>The url of captured image.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Source",
+            "field": "recognitions.source",
             "description": "<p>The input image source description for the further record information.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Recognitions.Time",
+            "field": "recognitions.time",
             "description": "<p>The creation time when the record was generated.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token for the subsequent request</p>"
           }
         ]
@@ -2004,7 +2002,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Recognitions\":[\n    {\n      \"FaceId\":1\n      \"CollectionId\":1\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\"\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645.jpg\"\n      \"Source\":\"#12323#E5 South 2nd Gate\"\n      \"Time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"FaceId\":1\n      \"CollectionId\":1\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\"\n      \"CaptureImage\":\"http://db.face.com/cap_1560471462613.jpg\"\n      \"Source\":\"#12323#E5 South 2nd Gate\"\n      \"Time\":\"2019-06-14 08:17:42\"\n    }\n  ],\n  \"NextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1\n      \"collectionId\":1\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\"\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\"\n      \"source\":\"#12323#E5 South 2nd Gate\"\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":1\n      \"collectionId\":1\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\"\n      \"captureImage\":\"http://db.face.com/cap_1560471462613.jpg\"\n      \"source\":\"#12323#E5 South 2nd Gate\"\n      \"time\":\"2019-06-14 08:17:42\"\n    }\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
           "type": "json"
         }
       ]
