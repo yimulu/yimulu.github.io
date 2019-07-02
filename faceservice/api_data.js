@@ -1503,6 +1503,55 @@ define({ "api": [
           },
           {
             "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "Recognitions.FaceId",
+            "description": "<p>The id of registered face..</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "Recognitions.CollectionId",
+            "description": "<p>The id of collection you want the face to be registered in..</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Recognitions.ExternalId",
+            "description": "<p>The id you want to associate with the face detect in the image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Recognitions.Image",
+            "description": "<p>The url of registered face image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Recognitions.CaptureImage",
+            "description": "<p>The url of captured image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Recognitions.Source",
+            "description": "<p>The input image source description for the further record information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Recognitions.Time",
+            "description": "<p>The creation time when the record was generated.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": true,
             "field": "NextToken",
