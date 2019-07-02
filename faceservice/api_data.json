@@ -83,20 +83,19 @@
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 204": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 204",
             "optional": false,
-            "field": "Result",
-            "description": "<p>Result code.</p>"
+            "field": "204",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
@@ -376,7 +375,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"collections\":[\n    {\"collectionId\":1,\n     \"tag\":\"TSBG\",\n     \"faceCount\":283,\n     \"description\":\"XXX處,XXX部,XXX課\",\n     \"time\":\"2019-06-12 07:46:48\"},\n    {\"collectionId\":2,\n     \"tag\":\"CNSBG\",\n     \"faceCount\":267,\n     \"description\":\"YYY處,YYY部,YYY課\",\n     \"Time\":\"2019-06-12 07:46:49\"}],\n  \"Total\":32\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"collections\":[\n    {\"collectionId\":1,\n     \"tag\":\"TSBG\",\n     \"faceCount\":283,\n     \"description\":\"XXX處,XXX部,XXX課\",\n     \"time\":\"2019-06-12 07:46:48\"},\n    {\"collectionId\":2,\n     \"tag\":\"CNSBG\",\n     \"faceCount\":267,\n     \"description\":\"YYY處,YYY部,YYY課\",\n     \"time\":\"2019-06-12 07:46:49\"}],\n  \"total\":32\n}",
           "type": "json"
         }
       ]
@@ -998,7 +997,7 @@
             "type": "Int[]",
             "optional": true,
             "field": "collectionIds",
-            "description": "<p>The ids of collection you want to fetch faces.</p>"
+            "description": "<p>The ids of collection you want to fetch faces. Empty means all collections.</p>"
           },
           {
             "group": "Parameter",
@@ -1108,9 +1107,9 @@
           {
             "group": "Parameter",
             "type": "Int[]",
-            "optional": false,
+            "optional": true,
             "field": "collectionIds",
-            "description": "<p>The ids of collection you want to fetch faces.</p>"
+            "description": "<p>The ids of collection you want to fetch faces. Empty means all collections.</p>"
           },
           {
             "group": "Parameter",
@@ -1497,21 +1496,21 @@
             "group": "Parameter",
             "type": "Multipart/Image",
             "optional": false,
-            "field": "Image",
+            "field": "image",
             "description": "<p>An image file.</p>"
           },
           {
             "group": "Parameter",
             "type": "Int[]",
-            "optional": false,
-            "field": "CollectionIds",
-            "description": "<p>The ids of collections used for face recognition.</p>"
+            "optional": true,
+            "field": "collectionIds",
+            "description": "<p>The ids of collections used for face recognition. Empty means all collections.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "Source",
+            "field": "source",
             "description": "<p>The input image source description for the further record information.</p>"
           }
         ]
@@ -1726,7 +1725,7 @@
             "type": "String",
             "optional": true,
             "field": "nextToken",
-            "description": "<p>Pagination token from the previous response.</p>"
+            "description": "<p>Pagination token from the previous response. The input may cause start/end to be non-functional.</p>"
           }
         ]
       }
@@ -1926,7 +1925,7 @@
             "type": "String",
             "optional": true,
             "field": "nextToken",
-            "description": "<p>Pagination token from the previous response.</p>"
+            "description": "<p>Pagination token from the previous response. The input may cause start/end to be non-functional.</p>"
           }
         ]
       }
@@ -2108,9 +2107,9 @@
           {
             "group": "Parameter",
             "type": "Int[]",
-            "optional": false,
+            "optional": true,
             "field": "collectionIds",
-            "description": "<p>The ids of collections used for face recognition.</p>"
+            "description": "<p>The ids of collections used for face recognition. Empty means all collections.</p>"
           },
           {
             "group": "Parameter",
@@ -2549,7 +2548,7 @@
             "type": "List",
             "optional": false,
             "field": "streams.collectionIds",
-            "description": "<p>The faces in these collections to be recognized.</p>"
+            "description": "<p>The faces in these collections to be recognized. Empty means all collections.</p>"
           },
           {
             "group": "Success 200",
@@ -2577,7 +2576,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"StreamId\": 1,\n  \"RtspUrl\": \"rtsp://usbcam_002.com\",\n  \"CollectionIds\":[1],\n  \"Source\": \"#12345#LH-C1-2F\",\n  \"Time\":\"2019-06-24 10:41:09\"\n  \"PostUrls\": []\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"streamId\": 1,\n  \"rtspUrl\": \"rtsp://usbcam_002.com\",\n  \"collectionIds\":[1],\n  \"source\": \"#12345#LH-C1-2F\",\n  \"time\":\"2019-06-24 10:41:09\"\n  \"postUrls\": []\n}",
           "type": "json"
         }
       ]
