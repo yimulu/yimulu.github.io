@@ -1526,43 +1526,92 @@
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "FaceComparisons",
+            "field": "faceComparisons",
             "description": "<p>The list of comparison result.</p>"
           },
           {
             "group": "Success 200",
             "type": "json",
             "optional": false,
-            "field": "Score",
+            "field": "faceComparisons.faceInfo",
+            "description": "<p>The Face area info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Float",
+            "optional": false,
+            "field": "faceComparisons.faceInfo.confidence",
             "description": "<p>confidence of face was detect.</p>"
           },
           {
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "BoundingBox",
+            "field": "faceComparisons.faceInfo.boundingBox",
             "description": "<p>Bounding box of face was detect, [x, y, w, h].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceComparisons.faceMatches",
+            "description": "<p>The Face matches info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face",
+            "description": "<p>The matched face.</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "FaceId",
+            "field": "faceComparisons.faceMatches.face.faceId",
             "description": "<p>The id of the face.</p>"
           },
           {
             "group": "Success 200",
             "type": "Int",
             "optional": false,
-            "field": "CollectionId",
-            "description": "<p>The id of collection includes the face.</p>"
+            "field": "faceComparisons.faceMatches.face.collectionId",
+            "description": "<p>The collectionId owns the face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.tag",
+            "description": "<p>The face tag information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.image",
+            "description": "<p>The face image url.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.time",
+            "description": "<p>The face creation time.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Float",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.similarity",
+            "description": "<p>The similarity score.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"FaceComparisons\":[\n    {\n      \"FaceInfo\":{\n        \"Confidence\": 0.996530,\n        \"BoundingBox\": [128, 204, 49, 76]\n      },\n      \"FaceMatches\":[\n        {\n          \"Face\":{\n            \"FaceId\": 1,\n            \"CollectionId\": 1,\n            \"ExternalId\": \"860001\",\n            \"Image\": \"https://db.face.com/8837382.jpg\"\n          },\n          \"Similarity\":0.965112\n        }\n      ]\n    },\n    {\n      \"FaceInfo\":{\n        \"Confidence\": 0.876612,\n        \"BoundingBox\": [330, 771, 82, 121]\n      },\n      \"FaceMatches\":[]\n    }\n  ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"faceComparisons\":[\n    {\n      \"faceInfo\":{\n        \"confidence\": 0.996530,\n        \"boundingBox\": [128, 204, 49, 76]\n      },\n      \"faceMatches\":[\n        {\n          \"face\":{\n            \"faceId\": 1,\n            \"collectionId\": 1,\n            \"tag\": \"860001\",\n            \"image\": \"https://db.face.com/8837382.jpg\",\n            \"time\":\"2019-06-13 09:46:49\"\n          },\n          \"similarity\":0.965112\n        }\n      ]\n    },\n    {\n      \"faceInfo\":{\n        \"confidence\": 0.876612,\n        \"boundingBox\": [330, 771, 82, 121]\n      },\n      \"faceMatches\":[]\n    }\n  ]\n}",
           "type": "json"
         }
       ]
