@@ -1285,7 +1285,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "tag",
-            "description": "<p>The external ID you want to update.</p>"
+            "description": "<p>The tag you want to update.</p>"
           },
           {
             "group": "Parameter",
@@ -1441,7 +1441,7 @@ define({ "api": [
             "type": "Int",
             "optional": false,
             "field": "id",
-            "description": "<p>The id of face. (-1 means to delete the fail records)</p>"
+            "description": "<p>The id of face. (0 means to delete the fail records)</p>"
           },
           {
             "group": "Parameter",
@@ -1746,7 +1746,7 @@ define({ "api": [
             "type": "Int",
             "optional": false,
             "field": "recognitions.faceId",
-            "description": "<p>The id of registered face..</p>"
+            "description": "<p>The id of registered face.</p>"
           },
           {
             "group": "Success 200",
@@ -1802,7 +1802,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1,\n      \"collectionId\":1,\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":2,\n      \"collectionId\":1,\n      \"tag\": \"860002\",\n      \"image\": \"https://db.face.com/face_2.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645_1.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":-1,\n      \"collectionId\":-1,\n      \"tag\": \"\",\n      \"image\": \"\",\n      \"captureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"source\":\"#12322#E5 South 1st Gate\",\n      \"time\":\"2019-06-14 08:17:43\"\n    },\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1,\n      \"collectionId\":1,\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":2,\n      \"collectionId\":1,\n      \"tag\": \"860002\",\n      \"image\": \"https://db.face.com/face_2.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645_1.jpg\",\n      \"source\":\"#12323#E5 South 2nd Gate\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":0,\n      \"collectionId\":0,\n      \"tag\": \"\",\n      \"image\": \"\",\n      \"captureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"source\":\"#12322#E5 South 1st Gate\",\n      \"time\":\"2019-06-14 08:17:43\"\n    },\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
           "type": "json"
         }
       ]
@@ -1898,7 +1898,7 @@ define({ "api": [
             "type": "Int",
             "optional": false,
             "field": "id",
-            "description": "<p>The id of face. (-1 means to fetch the fail records)</p>"
+            "description": "<p>The id of face. (0 means to fetch the fail records)</p>"
           },
           {
             "group": "Parameter",
@@ -2102,21 +2102,21 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "RtspUrl",
+            "field": "rtspUrl",
             "description": "<p>The RTSP stream Url for real-time recognition.</p>"
           },
           {
             "group": "Parameter",
             "type": "Int[]",
             "optional": false,
-            "field": "CollectionIds",
+            "field": "collectionIds",
             "description": "<p>The ids of collections used for face recognition.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "Source",
+            "field": "source",
             "description": "<p>The input stream source description for the further record information. The default value will be RtspUrl.</p>"
           }
         ]
@@ -2124,12 +2124,12 @@ define({ "api": [
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 201": [
           {
-            "group": "Success 200",
+            "group": "Success 201",
             "type": "Int",
             "optional": false,
-            "field": "StreamId",
+            "field": "streamId",
             "description": "<p>The id of registered stream.</p>"
           }
         ]
@@ -2137,7 +2137,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"StreamId\": 1\n}",
+          "content": "HTTP/1.1 201 OK\n{\n  \"streamId\": 1\n}",
           "type": "json"
         }
       ]
@@ -2222,20 +2222,19 @@ define({ "api": [
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 204": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 204",
             "optional": false,
-            "field": "result",
-            "description": "<p>result code.</p>"
+            "field": "204",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
@@ -2294,8 +2293,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/face/stream/result",
-    "title": "Get Result",
+    "url": "/face/stream/{id}/result",
+    "title": "Get Results",
     "version": "0.1.0",
     "name": "GetResults",
     "description": "<p>Polling the list of recognition result from stream if no subscription.</p>",
@@ -2312,28 +2311,28 @@ define({ "api": [
             "group": "Parameter",
             "type": "Int",
             "optional": false,
-            "field": "StreamId",
+            "field": "id",
             "description": "<p>The id of stream.</p>"
           },
           {
             "group": "Parameter",
             "type": "DateTime",
             "optional": true,
-            "field": "Start",
+            "field": "start",
             "description": "<p>The start date time of results to begin fetch.</p>"
           },
           {
             "group": "Parameter",
             "type": "Int",
             "optional": true,
-            "field": "MaxNum",
+            "field": "maxNum",
             "description": "<p>The max number of results to fetch.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "NextIterator",
+            "field": "nextIterator",
             "description": "<p>The retrieval point return by the previous response.</p>"
           }
         ]
@@ -2346,14 +2345,63 @@ define({ "api": [
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "Recognitions",
+            "field": "recognitions",
             "description": "<p>The list of recognition records.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.faceId",
+            "description": "<p>The id of registered face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.collectionId",
+            "description": "<p>The id of collection you want the face to be registered in.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "NextIterator",
+            "field": "recognitions.tag",
+            "description": "<p>The id you want to associate with the face detect in the image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.image",
+            "description": "<p>The url of registered face image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.captureImage",
+            "description": "<p>The url of captured image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.source",
+            "description": "<p>The input image source description for the further record information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.time",
+            "description": "<p>The creation time when the record was generated.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nextIterator",
             "description": "<p>The retrieval point for the next polling.</p>"
           }
         ]
@@ -2361,7 +2409,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Recognitions\":[\n    {\n      \"FaceId\":1,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860001\",\n      \"Image\": \"https://db.face.com/face_1.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461597.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:41.597\"\n    },\n    {\n      \"FaceId\":2,\n      \"CollectionId\":1,\n      \"ExternalId\": \"860002\",\n      \"Image\": \"https://db.face.com/face_2.jpg\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:41.645\"\n    },\n    {\n      \"FaceId\":-1,\n      \"CollectionId\":-1,\n      \"ExternalId\": \"\",\n      \"Image\": \"\",\n      \"CaptureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"Source\":\"rtsp://10.167.218.79:554/live\",\n      \"Time\":\"2019-06-14 08:17:43.251\"\n    }\n  ],\n  \"NextIterator\":\"xxEREdf5556fdsFDGeQHJUI87hEfGjNV\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1,\n      \"collectionId\":1,\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461597.jpg\",\n      \"source\":\"rtsp://10.167.218.79:554/live\",\n      \"time\":\"2019-06-14 08:17:41.597\"\n    },\n    {\n      \"faceId\":2,\n      \"collectionId\":1,\n      \"tag\": \"860002\",\n      \"image\": \"https://db.face.com/face_2.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"source\":\"rtsp://10.167.218.79:554/live\",\n      \"time\":\"2019-06-14 08:17:41.645\"\n    },\n    {\n      \"faceId\":0,\n      \"collectionId\":0,\n      \"tag\": \"\",\n      \"image\": \"\",\n      \"captureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"source\":\"rtsp://10.167.218.79:554/live\",\n      \"time\":\"2019-06-14 08:17:43.251\"\n    }\n  ],\n  \"nextIterator\":\"xxEREdf5556fdsFDGeQHJUI87hEfGjNV\"\n}",
           "type": "json"
         }
       ]
@@ -2484,10 +2532,45 @@ define({ "api": [
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "json",
+            "type": "List",
             "optional": false,
-            "field": "Stream",
-            "description": "<p>The stream info.</p>"
+            "field": "streams.streamId",
+            "description": "<p>The id of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.rtspUrl",
+            "description": "<p>The RTSP URL of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.collectionIds",
+            "description": "<p>The faces in these collections to be recognized.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.source",
+            "description": "<p>The source of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.time",
+            "description": "<p>The creation time of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.postUrls",
+            "description": "<p>The POST URLs for runtime recognition callbacks.</p>"
           }
         ]
       },
@@ -2522,14 +2605,14 @@ define({ "api": [
             "group": "Parameter",
             "type": "Int",
             "optional": true,
-            "field": "MaxNum",
+            "field": "maxNum",
             "description": "<p>The max number of results to fetch.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token from the previous response.</p>"
           }
         ]
@@ -2542,14 +2625,56 @@ define({ "api": [
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "Streams",
+            "field": "streams",
             "description": "<p>The list of streams.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.streamId",
+            "description": "<p>The id of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.rtspUrl",
+            "description": "<p>The RTSP URL of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.collectionIds",
+            "description": "<p>The faces in these collections to be recognized.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.source",
+            "description": "<p>The source of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.time",
+            "description": "<p>The creation time of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.postUrls",
+            "description": "<p>The POST URLs for runtime recognition callbacks.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": true,
-            "field": "NextToken",
+            "field": "nextToken",
             "description": "<p>Pagination token for the subsequent request.</p>"
           }
         ]
@@ -2557,7 +2682,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"Streams\":\n  [\n    {\n      \"StreamId\": 1,\n      \"RtspUrl\": \"rtsp://usbcam_002.com\",\n      \"CollectionIds\":[1,2,3],\n      \"Source\": \"#12345#LH-C1-2F\",\n      \"Time\":\"2019-06-24 10:41:09\"\n      \"PostUrls\": []\n    },\n    {\n      \"StreamId\": 2,\n      \"RtspUrl\": \"rtsp://usbcam_003.com\",\n      \"CollectionIds\":[1],\n      \"Source\": \"#12346#LH-C1-3F\",\n      \"Time\":\"2019-06-24 11:41:09\"\n      \"PostUrls\": [\"https://10.167.218.76:80/rtsp/result\"]\n    }\n  ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"streams\":\n  [\n    {\n      \"streamId\": 1,\n      \"rtspUrl\": \"rtsp://usbcam_002.com\",\n      \"collectionIds\":[1,2,3],\n      \"source\": \"#12345#LH-C1-2F\",\n      \"time\":\"2019-06-24 10:41:09\"\n      \"postUrls\": []\n    },\n    {\n      \"streamId\": 2,\n      \"rtspUrl\": \"rtsp://usbcam_003.com\",\n      \"collectionIds\":[1],\n      \"source\": \"#12346#LH-C1-3F\",\n      \"time\":\"2019-06-24 11:41:09\"\n      \"postUrls\": [\"https://10.167.218.76:80/rtsp/result\"]\n    }\n  ]\n}",
           "type": "json"
         }
       ]
@@ -2694,7 +2819,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/face/stream/subscription",
+    "url": "/face/stream/{id}/subscription",
     "title": "Subscribe Stream",
     "version": "0.1.0",
     "name": "SubStreamResult",
@@ -2712,14 +2837,14 @@ define({ "api": [
             "group": "Parameter",
             "type": "Int",
             "optional": false,
-            "field": "StreamId",
+            "field": "id",
             "description": "<p>The id of stream.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "PostUrl",
+            "field": "postUrl",
             "description": "<p>The url of recognition result to POST.</p>"
           }
         ]
@@ -2727,20 +2852,19 @@ define({ "api": [
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 201": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 201",
             "optional": false,
-            "field": "result",
-            "description": "<p>result code.</p>"
+            "field": "201",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 201 OK",
           "type": "json"
         }
       ]
@@ -2806,7 +2930,7 @@ define({ "api": [
   },
   {
     "type": "delete",
-    "url": "/face/stream/subscription",
+    "url": "/face/stream/{id}/subscription",
     "title": "Unsubscribe Stream",
     "version": "0.1.0",
     "name": "UnsubStreamResult",
@@ -2824,14 +2948,14 @@ define({ "api": [
             "group": "Parameter",
             "type": "Int",
             "optional": false,
-            "field": "StreamId",
+            "field": "id",
             "description": "<p>The id of stream.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "PostUrl",
+            "field": "postUrl",
             "description": "<p>The url of recognition result to POST.</p>"
           }
         ]
@@ -2839,20 +2963,19 @@ define({ "api": [
     },
     "success": {
       "fields": {
-        "Success 200": [
+        "Success 204": [
           {
-            "group": "Success 200",
-            "type": "Int",
+            "group": "Success 204",
             "optional": false,
-            "field": "result",
-            "description": "<p>result code.</p>"
+            "field": "204",
+            "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
