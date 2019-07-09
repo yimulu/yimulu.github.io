@@ -504,7 +504,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "Float",
+            "type": "List",
             "optional": false,
             "field": "faceInfoComparisons.targetInfo.boundingBox",
             "description": "<p>Bounding box of face was detected, [x, y, w, h].</p>"
@@ -518,7 +518,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "List",
+            "type": "Float",
             "optional": false,
             "field": "faceInfoComparisons.sourceMatches.confidence",
             "description": "<p>Confidence of face was detected [0..1.0].</p>"
@@ -532,7 +532,7 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "List",
+            "type": "Float",
             "optional": false,
             "field": "faceInfoComparisons.sourceMatches.similarity",
             "description": "<p>The similarity score.</p>"
