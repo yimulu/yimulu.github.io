@@ -465,14 +465,14 @@
             "group": "Parameter",
             "type": "Multipart/Image",
             "optional": false,
-            "field": "ImageSource",
+            "field": "imageSource",
             "description": "<p>The source image file.</p>"
           },
           {
             "group": "Parameter",
             "type": "Multipart/Image",
             "optional": false,
-            "field": "ImageTarget",
+            "field": "imageTarget",
             "description": "<p>The target image file.</p>"
           }
         ]
@@ -485,15 +485,64 @@
             "group": "Success 200",
             "type": "List",
             "optional": false,
-            "field": "FaceInfoComparisons",
+            "field": "faceInfoComparisons",
             "description": "<p>List of face info comparisons were detected.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Json",
+            "optional": false,
+            "field": "faceInfoComparisons.targetInfo",
+            "description": "<p>Target face info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Float",
+            "optional": false,
+            "field": "faceInfoComparisons.targetInfo.confidence",
+            "description": "<p>Confidence of face was detected [0..1.0].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Float",
+            "optional": false,
+            "field": "faceInfoComparisons.targetInfo.boundingBox",
+            "description": "<p>Bounding box of face was detected, [x, y, w, h].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceInfoComparisons.sourceMatches",
+            "description": "<p>Matched source faces.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceInfoComparisons.sourceMatches.confidence",
+            "description": "<p>Confidence of face was detected [0..1.0].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceInfoComparisons.sourceMatches.boundingBox",
+            "description": "<p>Bounding box of face was detected, [x, y, w, h].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceInfoComparisons.sourceMatches.similarity",
+            "description": "<p>The similarity score.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"FaceInfoComparisons\":[\n    {\n      \"TargetInfo\": {\n        \"Confidence\": 0.996530,\n        \"BoundingBox\": [128, 204, 49, 76]\n      },\n      \"SourceMatches\": [\n        {\n          \"Confidence\": 0.966301,\n          \"BoundingBox\": [88, 104, 60, 81],\n          \"Similarity\":0.965112\n        }\n      ]\n    },\n    {\n      \"TargetInfo\": {\n        \"Confidence\": 0.996530,\n        \"BoundingBox\": [228, 192, 72, 110]\n      },\n      \"SourceMatches\": []\n    }\n  ],\n  \"SourceMismatches\":[\n    {\n        \"Confidence\": 0.9165021,\n        \"BoundingBox\": [152, 100, 65, 83]\n    },\n    {\n        \"Confidence\": 0.958837,\n        \"BoundingBox\": [302, 152, 70, 108]\n    }\n  ]\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"faceInfoComparisons\":[\n    {\n      \"targetInfo\": {\n        \"confidence\": 0.996530,\n        \"boundingBox\": [128, 204, 49, 76]\n      },\n      \"sourceMatches\": [\n        {\n          \"confidence\": 0.966301,\n          \"boundingBox\": [88, 104, 60, 81],\n          \"similarity\":0.965112\n        }\n      ]\n    },\n    {\n      \"targetInfo\": {\n        \"confidence\": 0.996530,\n        \"boundingBox\": [228, 192, 72, 110]\n      },\n      \"sourceMatches\": []\n    }\n  ],\n  \"sourceMismatches\":[\n    {\n        \"confidence\": 0.9165021,\n        \"boundingBox\": [152, 100, 65, 83]\n    },\n    {\n        \"confidence\": 0.958837,\n        \"boundingBox\": [302, 152, 70, 108]\n    }\n  ]\n}",
           "type": "json"
         }
       ]
