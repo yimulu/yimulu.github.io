@@ -446,6 +446,9 @@
     "groupTitle": "Collection"
   },
   {
+    "deprecated": {
+      "content": "LH doesn't suppot."
+    },
     "type": "post",
     "url": "/face/comparison",
     "title": "Comapre Face",
@@ -547,10 +550,13 @@
         }
       ]
     },
-    "filename": "faceapidoc/comparison.js",
+    "filename": "faceapidoc/_comparison_0.1.0.js",
     "groupTitle": "Comparison"
   },
   {
+    "deprecated": {
+      "content": "LH doesn't suppot."
+    },
     "type": "post",
     "url": "/face/detection",
     "title": "Detect Face",
@@ -610,7 +616,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/detection.js",
+    "filename": "faceapidoc/_detection_0.1.0.js",
     "groupTitle": "Detection"
   },
   {
@@ -1534,6 +1540,120 @@
     "type": "post",
     "url": "/face/recognition",
     "title": "Recognize by Image",
+    "version": "0.2.0",
+    "name": "RecognizeImage",
+    "description": "<p>Detect each face in the image and then find out the face among the collections.</p>",
+    "group": "Recognition",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Multipart/Image",
+            "optional": false,
+            "field": "image",
+            "description": "<p>An image file.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int[]",
+            "optional": true,
+            "field": "collectionIds",
+            "description": "<p>The ids of collections used for face recognition. Empty means all collections.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceComparisons",
+            "description": "<p>The list of comparison result.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "faceComparisons.faceInfo",
+            "description": "<p>The Face area info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceComparisons.faceInfo.boundingBox",
+            "description": "<p>Bounding box of face was detect, [x, y, w, h].</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "faceComparisons.faceMatches",
+            "description": "<p>The Face matches info.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face",
+            "description": "<p>The matched face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.faceId",
+            "description": "<p>The id of the face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.collectionId",
+            "description": "<p>The collectionId owns the face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.tag",
+            "description": "<p>The face tag information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.image",
+            "description": "<p>The face image url.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "faceComparisons.faceMatches.face.time",
+            "description": "<p>The face creation time.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"faceComparisons\":[\n    {\n      \"faceInfo\":{\n        \"boundingBox\": [128, 204, 49, 76]\n      },\n      \"faceMatches\":[\n        {\n          \"face\":{\n            \"faceId\": 1,\n            \"collectionId\": 1,\n            \"tag\": \"860001\",\n            \"image\": \"https://db.face.com/8837382.jpg\",\n            \"time\":\"2019-06-13 09:46:49\"\n          }\n        }\n      ]\n    },\n    {\n      \"faceInfo\":{\n        \"boundingBox\": [330, 771, 82, 121]\n      },\n      \"faceMatches\":[]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/recognition.js",
+    "groupTitle": "Recognition"
+  },
+  {
+    "type": "post",
+    "url": "/face/recognition",
+    "title": "Recognize by Image",
     "version": "0.1.0",
     "name": "RecognizeImage",
     "description": "<p>Detect each face in the image and then find out the face among the collections.</p>",
@@ -1662,7 +1782,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/recognition.js",
+    "filename": "faceapidoc/_recognition_0.1.0.js",
     "groupTitle": "Recognition"
   },
   {
@@ -1735,6 +1855,134 @@
       ]
     },
     "filename": "faceapidoc/_recognition.js",
+    "groupTitle": "Recognition"
+  },
+  {
+    "type": "get",
+    "url": "/face/recognition",
+    "title": "Get Records",
+    "version": "0.2.0",
+    "name": "RecognizeRecord",
+    "description": "<p>Get a list of recognition result from previously</p>",
+    "group": "Recognition",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "start",
+            "description": "<p>The Start date time to fetch records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "end",
+            "description": "<p>The End date time to fetch records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": true,
+            "field": "maxNum",
+            "description": "<p>The max number of results to fetch.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token from the previous response. The input may cause start/end to be non-functional.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "recognitions",
+            "description": "<p>The list of recognition records.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.faceId",
+            "description": "<p>The id of registered face.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.collectionId",
+            "description": "<p>The id of collection you want the face to be registered in..</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.tag",
+            "description": "<p>The id you want to associate with the face detect in the image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.image",
+            "description": "<p>The url of registered face image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.captureImage",
+            "description": "<p>The url of captured image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.source",
+            "description": "<p>The input image source description for the further record information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.time",
+            "description": "<p>The creation time when the record was generated.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "remainings",
+            "description": "<p>The number of remainings are not listed in this response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token for the subsequent request to fetch the next set of records.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1,\n      \"collectionId\":1,\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\",\n      \"source\":\"Local Camera\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":2,\n      \"collectionId\":1,\n      \"tag\": \"860002\",\n      \"image\": \"https://db.face.com/face_2.jpg\",\n      \"captureImage\":\"http://db.face.com/cap_1560471461645_1.jpg\",\n      \"source\":\"Local Camera\",\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":0,\n      \"collectionId\":0,\n      \"tag\": \"\",\n      \"image\": \"\",\n      \"captureImage\":\"http://db.face.com/cap_1560471463251.jpg\",\n      \"source\":\"rtsp://10.167.218.72:554/live\",\n      \"time\":\"2019-06-14 08:17:43\"\n    },\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/recognition.js",
     "groupTitle": "Recognition"
   },
   {
@@ -1855,7 +2103,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/recognition.js",
+    "filename": "faceapidoc/_recognition_0.1.0.js",
     "groupTitle": "Recognition"
   },
   {
@@ -1928,6 +2176,141 @@
       ]
     },
     "filename": "faceapidoc/_recognition.js",
+    "groupTitle": "Recognition"
+  },
+  {
+    "type": "get",
+    "url": "/face/{id}/recognition",
+    "title": "Get Records of Face",
+    "version": "0.2.0",
+    "name": "RecognizeRecordByFaceId",
+    "description": "<p>Get a list of recognition result about specific user from previously</p>",
+    "group": "Recognition",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of face. (0 means to fetch the fail records)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "start",
+            "description": "<p>The start date time to fetch records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "DateTime",
+            "optional": true,
+            "field": "end",
+            "description": "<p>The end date time to fetch records.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": true,
+            "field": "maxNum",
+            "description": "<p>The max number of results to fetch.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token from the previous response. The input may cause start/end to be non-functional.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "recognitions",
+            "description": "<p>The list of recognition records.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.faceId",
+            "description": "<p>The id of registered face..</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "recognitions.collectionId",
+            "description": "<p>The id of collection you want the face to be registered in..</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.tag",
+            "description": "<p>The id you want to associate with the face detect in the image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.image",
+            "description": "<p>The url of registered face image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.captureImage",
+            "description": "<p>The url of captured image.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.source",
+            "description": "<p>The input image source description for the further record information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "recognitions.time",
+            "description": "<p>The creation time when the record was generated.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "remainings",
+            "description": "<p>The number of remainings are not listed in this response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token for the subsequent request</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"recognitions\":[\n    {\n      \"faceId\":1\n      \"collectionId\":1\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\"\n      \"captureImage\":\"http://db.face.com/cap_1560471461645.jpg\"\n      \"source\":\"Local Camera\"\n      \"time\":\"2019-06-14 08:17:41\"\n    },\n    {\n      \"faceId\":1\n      \"collectionId\":1\n      \"tag\": \"860001\",\n      \"image\": \"https://db.face.com/face_1.jpg\"\n      \"captureImage\":\"http://db.face.com/cap_1560471462613.jpg\"\n      \"source\":\"Local Camera\"\n      \"time\":\"2019-06-14 08:17:42\"\n    }\n  ],\n  \"nextToken\":\"XAFsdgE347kdfryjbcaq133iGhJ9ScF3\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/recognition.js",
     "groupTitle": "Recognition"
   },
   {
@@ -2055,7 +2438,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/recognition.js",
+    "filename": "faceapidoc/_recognition_0.1.0.js",
     "groupTitle": "Recognition"
   },
   {
@@ -2134,6 +2517,62 @@
     "type": "post",
     "url": "/face/stream",
     "title": "Create Stream",
+    "version": "0.2.0",
+    "name": "CreateStream",
+    "description": "<p>Register an exist RTSP stream for recognition</p>",
+    "group": "Stream",
+    "permission": [
+      {
+        "name": "ADMIN"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "rtspUrl",
+            "description": "<p>The RTSP stream Url for real-time recognition.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Int[]",
+            "optional": true,
+            "field": "collectionIds",
+            "description": "<p>The ids of collections used for face recognition. Empty means all collections.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 201": [
+          {
+            "group": "Success 201",
+            "type": "Int",
+            "optional": false,
+            "field": "streamId",
+            "description": "<p>The id of registered stream.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n  \"streamId\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/stream.js",
+    "groupTitle": "Stream"
+  },
+  {
+    "type": "post",
+    "url": "/face/stream",
+    "title": "Create Stream",
     "version": "0.1.0",
     "name": "CreateStream",
     "description": "<p>Register an exist RTSP stream for recognition</p>",
@@ -2190,7 +2629,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/stream.js",
+    "filename": "faceapidoc/_stream_0.1.0.js",
     "groupTitle": "Stream"
   },
   {
@@ -2553,6 +2992,83 @@
     "type": "get",
     "url": "/face/stream/{id}",
     "title": "Get Stream",
+    "version": "0.2.0",
+    "name": "GetStream",
+    "description": "<p>Get the registered stream information</p>",
+    "group": "Stream",
+    "permission": [
+      {
+        "name": "ADMIN"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of stream.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.streamId",
+            "description": "<p>The id of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.rtspUrl",
+            "description": "<p>The RTSP URL of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.collectionIds",
+            "description": "<p>The faces in these collections to be recognized. Empty means all collections.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.time",
+            "description": "<p>The creation time of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.postUrls",
+            "description": "<p>The POST URLs for runtime recognition callbacks.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"streamId\": 1,\n  \"rtspUrl\": \"rtsp://usbcam_002.com\",\n  \"collectionIds\":[1],\n  \"time\":\"2019-06-24 10:41:09\"\n  \"postUrls\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/stream.js",
+    "groupTitle": "Stream"
+  },
+  {
+    "type": "get",
+    "url": "/face/stream/{id}",
+    "title": "Get Stream",
     "version": "0.1.0",
     "name": "GetStream",
     "description": "<p>Get the registered stream information</p>",
@@ -2626,6 +3142,111 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n  \"streamId\": 1,\n  \"rtspUrl\": \"rtsp://usbcam_002.com\",\n  \"collectionIds\":[1],\n  \"source\": \"#12345#LH-C1-2F\",\n  \"time\":\"2019-06-24 10:41:09\"\n  \"postUrls\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "faceapidoc/_stream_0.1.0.js",
+    "groupTitle": "Stream"
+  },
+  {
+    "type": "get",
+    "url": "/face/stream/",
+    "title": "Get Stream List",
+    "version": "0.2.0",
+    "name": "GetStreamList",
+    "description": "<p>Get a list of registered stream sources on service</p>",
+    "group": "Stream",
+    "permission": [
+      {
+        "name": "ADMIN"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Int",
+            "optional": true,
+            "field": "maxNum",
+            "description": "<p>The max number of results to fetch.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token from the previous response.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams",
+            "description": "<p>The list of streams.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.streamId",
+            "description": "<p>The id of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.rtspUrl",
+            "description": "<p>The RTSP URL of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.collectionIds",
+            "description": "<p>The faces in these collections to be recognized.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.time",
+            "description": "<p>The creation time of stream.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "List",
+            "optional": false,
+            "field": "streams.postUrls",
+            "description": "<p>The POST URLs for runtime recognition callbacks.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Int",
+            "optional": false,
+            "field": "remainings",
+            "description": "<p>The number of remainings are not listed in this response.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "nextToken",
+            "description": "<p>Pagination token for the subsequent request.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"streams\":\n  [\n    {\n      \"streamId\": 1,\n      \"rtspUrl\": \"rtsp://usbcam_002.com\",\n      \"collectionIds\":[1,2,3],\n      \"time\":\"2019-06-24 10:41:09\"\n      \"postUrls\": []\n    },\n    {\n      \"streamId\": 2,\n      \"rtspUrl\": \"rtsp://usbcam_003.com\",\n      \"collectionIds\":[1],\n      \"time\":\"2019-06-24 11:41:09\"\n      \"postUrls\": [\"https://10.167.218.76:80/rtsp/result\"]\n    }\n  ]\n}",
           "type": "json"
         }
       ]
@@ -2735,7 +3356,7 @@
         }
       ]
     },
-    "filename": "faceapidoc/stream.js",
+    "filename": "faceapidoc/_stream_0.1.0.js",
     "groupTitle": "Stream"
   },
   {
