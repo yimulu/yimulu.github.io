@@ -3430,11 +3430,11 @@
     },
     "success": {
       "fields": {
-        "Success 201": [
+        "Success 204": [
           {
-            "group": "Success 201",
+            "group": "Success 204",
             "optional": false,
-            "field": "201",
+            "field": "204",
             "description": "<p>If successful, this method returns an empty response body.</p>"
           }
         ]
@@ -3442,7 +3442,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 201 OK",
+          "content": "HTTP/1.1 204 OK",
           "type": "json"
         }
       ]
