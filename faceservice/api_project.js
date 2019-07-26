@@ -1,6 +1,6 @@
 define({
   "name": "Face Service",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Face service api documentation",
   "title": "Face Service",
   "url": "http://103.252.196.197:31001/v1",
@@ -31,7 +31,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-07-18T01:56:55.724Z",
+    "time": "2019-07-26T01:09:09.462Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }
